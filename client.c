@@ -8,6 +8,19 @@ void error(const char *);
 
 int main(int argc, char *argv[])
 {
+    int opt;
+    long timeout;
+    while ((opt = getopt(argc, argv, "t:")) != -1)
+    {
+        if (opt == 't')
+            timeout = atoi(optarg) * 1000;
+        else
+        {
+            fprintf(stderr, "Use: %s [-b size] milliseconds timeout\n", argv[0]);
+            exit(EXIT_FAILURE);
+        }
+    }
+
     int sockfd, servlen,n;
     struct sockaddr_un  serv_addr;
 
@@ -31,6 +44,7 @@ int main(int argc, char *argv[])
         write(1, "Server response: ", 17);
         write(1, buffer, n);
         write(1, "\n", 2);
+        usleep(timeout);
     }
     close(sockfd);
     return 0;
