@@ -1,4 +1,3 @@
-#include <sys/types.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <sys/socket.h>
@@ -41,9 +40,9 @@ int main(int argc, char *argv[])
     {
         write(sockfd, buffer, strlen(buffer));
         n = read(sockfd, buffer, buf_size);
-        write(1, "Server response: ", 17);
-        write(1, buffer, n);
-        write(1, "\n", 2);
+//        write(1, "Server response: ", 17);
+//        write(1, buffer, n);
+//        write(1, "\n", 2);
         usleep(timeout);
     }
     close(sockfd);

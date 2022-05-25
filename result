@@ -1,0 +1,29 @@
+1. test on 100: result = 0; test on file with result 1 - ok.
+
+2.
+// sequential launch
+// first
+desc num: 4.
+heap: 1431670784.
+
+// latest
+desc num: 4.
+heap: 1431670784.
+=======================
+// parallel launch 100
+// first
+desc num: 4.
+heap: 1431670784.
+
+// latest
+desc num: 103.
+heap: 1431670784.
+
+3.
+0..1 sec for 20,50,100 clients:
+file 100 strings * max delay 1 sec = max client time = 100 sec
+
+clients time  delta
+100     103   3
+50      101   1
+20      100   0
